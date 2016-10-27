@@ -1,5 +1,13 @@
 $(document).ready(function() {
-    $('#simple-menu').sidr({
+    $('#left-menu').sidr({
+        name: 'left-sidr',
+        side: 'left',
+        displace: false
+    });
+
+    $('#right-menu').sidr({
+        name: 'right-sidr',
+        side: 'right',
         displace: false
     });
     
@@ -7,6 +15,38 @@ $(document).ready(function() {
             $.sidr('close');
     });
 
+    //Currently Handles swipe of the left nav bar
+    $(function(){
+        $('#controller').swipe({
+            swipe:function(event, direction, distnace, duration, fingerCount, fingerData){
+                if (direction == 'right'){
+                    $.sidr('left-sidr', 'open');
+                } else if (direction == 'left'){
+                    $.sidr('right-sidr', 'open');
+                }
+            }
+        });
+    });
+
+    $(function(){
+        $('#left-sidr').swipe({
+            swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+                if (direction == 'left'){
+                    $.sidr('left-sidr', 'close');
+                 }
+            }
+        });
+    });
+    $(function(){
+        $('#right-sidr').swipe({
+            swipe:function(event, direction, distance, duration, fingerCount, fingerData){
+                if (direction == 'right'){
+                    $.sidr('right-sidr', 'close');
+                 }
+            }
+        });
+    });
+      
 });
 
 //Set initial Status for Devices

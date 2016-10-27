@@ -1,17 +1,30 @@
 extend base
+
+block addjs_begin
+  script(src='static/js/jquery.touchSwipe.js')
+
 block addcss
   link(rel='stylesheet', href='static/css/controller.css')
 
 block content
   div#controller
     div#buttons
-      a#simple-menu(href="#sidr" class="btn btn-default") Toggle Menu
+      a#left-menu(href="#left-sidr" class="btn btn-default") Toggle Menu
 
-  div#sidr
+  div#left-sidr
     ul
       li
         a#onkyo_pwr(href="#") Onkyo Pwr
       li
         a#proj_pwr(href="#") Proj Pwr
 
-block addjs
+  div#right-sidr
+    ul
+      li
+        a#onkyo-device(href="#") Onkyo
+      li
+        a#benq-projector(href="#") Projector
+      li
+        a#firetv-remote(href="#") Fire TV Remote
+        
+block addjs_end
