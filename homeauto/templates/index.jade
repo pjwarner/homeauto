@@ -1,6 +1,17 @@
 extend base
+block addcss
+  link(rel='stylesheet', href='static/css/controller.css')
+
 block content
-  h1 Hello World!
+  div#controller
+    div#buttons
+      a#simple-menu(href="#sidr" class="btn btn-default") Toggle Menu
+
+  div#sidr
+    ul
+      li
+        a#onkyo_pwr(href="#") Onkyo Pwr
+      li
+        a#proj_pwr(href="#") Proj Pwr
 
 block addjs
-  h2 test

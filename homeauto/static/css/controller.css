@@ -1,0 +1,13 @@
+#buttons{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+ol.buttons{
+    margin: 10px 0;
+}
+
+#controller{
+    width: 100%;
+    height: 600px;
+}
