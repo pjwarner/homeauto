@@ -52,6 +52,7 @@ $(document).ready(function() {
 //Set initial Status for Devices
 Onkyo_Power_Status();
 Projector_Power_Status();
+//get_kitchen_lights_status(); might have to do this via python
 
 function Onkyo_Power_Status(){
     $.ajax({
@@ -115,3 +116,37 @@ function control_firetv(command){
     //ajax call to routable address to call adb commands for up/down/left/right/etc
 }
 
+//Z-Wave Lighting
+function get_kitchen_lights_status(){
+    $.ajax({
+        type: "POST",
+        beforeSend: function (request)
+        {
+            request.setRequestHeader('Access-Control-Allow-Origin', '*');
+            //request.setRequestHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+        },
+        dataType: 'text',
+        url: 'http://10.10.10.9:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_6-0-37',
+        //data: ({username: "homeauto", password: "h0m34ut0"})
+        username: "homeauto",
+        password: "h0m34ut0",
+    }).done(function(data){
+        alert(data)
+    });
+}
+
+function update_kitchen_lights(state){
+    if (state === 'off'){
+        $("#cabinet_lights").text('Top Cabinet Lights On');
+    } else {
+        $("#cabinet_lights").text('Top Cabinet Lights Off');
+    }
+}
+
+// function toggle_cabinet_lights(state){
+//     $.ajax({
+//         url: 'http://10.10.10.9:8083/ZAutomation/api/v1/devices/ZWayVDev_zway_6-0-37/command/' + state,
+//     )}.done(function(){
+//         update_kitchen_lights(state);
+//     });
+// }
